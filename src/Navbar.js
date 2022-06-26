@@ -1,7 +1,14 @@
-const Navbar = () => {
+import {useState} from "react";
 
-    return (<div className="Navbar">
-            <h2>Nav</h2>
+const Navbar = () => {
+    const [search, setSearch] = useState("")
+
+    return (
+        <div className="Navbar">
+            <div className="NavInfo">
+                <span>Nav</span>
+                <input type="text"/>
+            </div>
         </div>)
 }
 

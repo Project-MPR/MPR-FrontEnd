@@ -1,5 +1,7 @@
 .Navbar {
     border : 1px solid gray;
+    text-align: center;
+    padding: 20px;
 }
 
 .MainContent{
@@ -15,4 +17,10 @@
 
 .MainContent .myMap{
     float: left;
+}
+
+.MainContent .MainList .MainListItem{
+    border: 1px solid gray;
+    margin: 20px;
+    padding-bottom: 20px;
 }
