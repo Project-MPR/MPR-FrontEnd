@@ -29,8 +29,34 @@ const dummyList = [
         r_name: "EEE",
         station_to_r_time: 50,
     },
+    {
+        id : 5,
+        r_name: "AAA",
+        station_to_r_time: 10,
+    },
+    {
+        id : 6,
+        r_name: "BBB",
+        station_to_r_time: 20,
+    },
+    {
+        id : 7,
+        r_name: "CCC",
+        station_to_r_time: 30,
+    },
+    {
+        id : 8,
+        r_name: "DDD",
+        station_to_r_time: 40,
+    },
+    {
+        id : 9,
+        r_name: "EEE",
+        station_to_r_time: 50,
+    },
 ]
 
+// https://jsonplaceholder.typicode.com/comments
 
 function App() {
     return (

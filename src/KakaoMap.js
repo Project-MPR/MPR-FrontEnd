@@ -13,8 +13,7 @@ const KakaoMap = () => {
     }, []);
 
     return (
-        <div id='myMap' style={{width: '100vw',
-            height: '100vh'}}></div>
+        <div id='myMap' style={{height:"95vh", width : "80vw"}}></div>
     );
 }
 
