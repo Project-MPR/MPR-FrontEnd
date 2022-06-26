@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import KakaoMap from "./KakaoMap";
+import Navbar from "./Navbar";
+import MainList from "./MainList";
+
+const dummyList = [
+    {
+        r_name: "AAA",
+        station_to_r_time: 10,
+
+    },
+]
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Navbar/>
+            <div className="MainContent">
+                <MainList/>
+                <KakaoMap/>
+            </div>
+        </div>
+    );
 }
 
 export default App;
