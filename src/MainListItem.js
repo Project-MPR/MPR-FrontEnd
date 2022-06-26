@@ -1,7 +1,7 @@
 const MainListItem = ({item}) => {
 
     return (
-            <div className="MainListItem">
+        <div className="MainListItem">
             <h2>list element</h2>
             <div className="info">
                 <span>식당 이름 : {item.r_name}</span><br/>
