@@ -1,15 +1,18 @@
 import {useState} from "react";
 
 const Navbar = () => {
-    const [search, setSearch] = useState("")
+    const [search, setSearch] = useState("");
 
     return (
         <div className="Navbar">
-            <div className="NavInfo">
-                <span>Nav</span>
-                <input type="text"/>
-            </div>
+                <span>역 검색 : </span>
+                <input
+                    className="NavInput"
+                    value={search}
+                    onChange={(e) => {
+                        setSearch(e.target.value)
+                    }}
+                />
         </div>)
 }
-
 export default Navbar;
