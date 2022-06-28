@@ -1,26 +1,45 @@
+.App {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+
 .Navbar {
-    border : 1px solid gray;
-    text-align: center;
-    padding: 20px;
+    text-align:left;
+    width: 100%;
+    height: 5%;
+    vertical-align: middle;
+    padding-top: 5px;
+    padding-left:10px ;
+}
+.Navbar .NavInput{
+    width: 60%;
+    height: 70%;
+    vertical-align: middle;
 }
 
-.MainContent{
+
+.MainContent {
     border: 1px solid gray;
-    display :flex;
+    display: flex;
 }
 
-.MainContent .MainList{
-    float: left;
-    text-align: center;
-    width: 400px;
+.MainContent .myMap {
+    float: right;
 }
 
-.MainContent .myMap{
-    float: left;
+.MainContent .MainList {
+    border-right: 1px solid gray;
+    width: 20%;
+    height: 95vh;
+    overflow: scroll;
 }
 
 .MainContent .MainList .MainListItem{
-    border: 1px solid gray;
-    margin: 20px;
-    padding-bottom: 20px;
+    border-bottom: 1px solid gray;
+    padding: 20px;
 }
+
+
+

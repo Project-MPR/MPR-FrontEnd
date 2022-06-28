@@ -5,16 +5,14 @@ const Navbar = () => {
 
     return (
         <div className="Navbar">
-            <div className="NavInfo">
-                <span>Nav</span>
+                <span>역 검색 : </span>
                 <input
+                    className="NavInput"
                     value={search}
                     onChange={(e) => {
                         setSearch(e.target.value)
                     }}
-                    type="text"
                 />
-            </div>
         </div>)
 }
 export default Navbar;

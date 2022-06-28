@@ -2,43 +2,47 @@ import './App.css';
 import KakaoMap from "./KakaoMap";
 import Navbar from "./Navbar";
 import MainList from "./MainList";
+import {useEffect, useState} from "react";
 
-const dummyList = [
-    {
-        id : 0,
-        r_name: "AAA",
-        station_to_r_time: 10,
-    },
-    {
-        id : 1,
-        r_name: "BBB",
-        station_to_r_time: 20,
-    },
-    {
-        id : 2,
-        r_name: "CCC",
-        station_to_r_time: 30,
-    },
-    {
-        id : 3,
-        r_name: "DDD",
-        station_to_r_time: 40,
-    },
-    {
-        id : 4,
-        r_name: "EEE",
-        station_to_r_time: 50,
-    },
-]
+// http://localhost:8080/api/restaurant/역삼
 
+const {kakao} = window;
 
 function App() {
+
+    const [data, setData] = useState([]);
+    const [map, setMap] = useState({});
+    const [marker, setMarker] = useState({});
+    const [station, setStation] = useState("광운대역");
+
+    const getDate = async (station) => {
+        const res = await fetch(`http://localhost:8080/api/restaurant/${station}`)
+            .then(res => res.json())
+        // 정렬
+        res.sort((a, b) => a.distance - b.distance);// 거리 순으로 오름차순 정렬
+        setData(res);
+    }
+
+    useEffect(()=>{
+        getDate(station);
+    }, [station]);
+
+    useEffect(() => {
+        const container = document.getElementById("myMap");
+        const options = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667),
+            level: 3
+        };
+        setMap(new kakao.maps.Map(container, options));
+        setMarker(new kakao.maps.Marker());
+    }, []);
+
     return (
         <div className="App">
             <Navbar/>
             <div className="MainContent">
-                <MainList listContent={dummyList}/>
-                <KakaoMap/>
+                <MainList listContent={data} map={map} marker={marker}/>
+                <KakaoMap map={map}/>
             </div>
         </div>
     );

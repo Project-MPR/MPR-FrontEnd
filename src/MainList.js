@@ -1,17 +1,23 @@
 import MainListItem from "./MainListItem";
+import React from "react";
 
-const MainList = ({listContent}) => {
+const MainList = ({listContent, map, marker}) => {
 
-    return (<div className="MainList">
-        <h2>MainList</h2>
-        {
-            listContent && listContent.map(it => <MainListItem key={it.id} item={it}/>)
-        }
-    </div>);
+    return (
+        <div className="MainList">
+            {
+                listContent && listContent.map(it => <MainListItem
+                    key={it.id}
+                    item={it}
+                    map={map}
+                    marker={marker}
+                />)
+            }
+        </div>);
 }
 
 MainList.defaultProps = {
     listContent: []
 }
 
-export default MainList;
+export default React.memo(MainList);
