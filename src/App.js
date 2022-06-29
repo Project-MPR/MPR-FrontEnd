@@ -10,8 +10,6 @@ const {kakao} = window;
 
 function App() {
     const [data, setData] = useState([]);
-    const [map, setMap] = useState({});
-    const [marker, setMarker] = useState({});
     const [station, setStation] = useState(
         {
             name: "광운대역",
@@ -19,7 +17,10 @@ function App() {
             lat: 127.061441277,
             position: new kakao.maps.LatLng(37.623662704, 127.061441277),
         });
+    // kakao map api를 위한 객체들
     const stationPosition = new kakao.maps.LatLng(station.lon, station.lat);
+    const [map, setMap] = useState({});
+    const [marker, setMarker] = useState({});
     const [stationToRestaurantPolyline, setStationToRestaurantPolyline] = useState(
         new kakao.maps.Polyline({
             strokeWeight: 6, // 선의 두께 입니다
@@ -28,6 +29,9 @@ function App() {
             strokeStyle: 'shortdashdot' // 선의 스타일입니다
         }));
 
+    const [customOverlay, setCustomOverlay] = useState(new kakao.maps.CustomOverlay({
+        yAnchor: 1
+    }));
 
     // rest api로 역 이름을 통해 음식점 정보를 가져오는 함수
     const getDate = async (station) => {
@@ -64,6 +68,7 @@ function App() {
                     marker={marker}
                     station={station}
                     stationToRestaurantPolyline={stationToRestaurantPolyline}
+                    customOverlay={customOverlay}
                 />
                 <KakaoMap map={map} station={station}/>
             </div>

@@ -7,7 +7,8 @@ const MainList = (
         map,
         marker,
         station,
-        stationToRestaurantPolyline
+        stationToRestaurantPolyline,
+        customOverlay,
     }
 ) => {
     return (
@@ -20,6 +21,7 @@ const MainList = (
                     marker={marker}
                     station={station}
                     stationToRestaurantPolyline={stationToRestaurantPolyline}
+                    customOverlay={customOverlay}
                 />)
             }
         </div>);

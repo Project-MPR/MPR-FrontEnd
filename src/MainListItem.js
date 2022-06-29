@@ -8,11 +8,11 @@ const MainListItem = (
         map,
         marker,
         station,
-        stationToRestaurantPolyline
+        stationToRestaurantPolyline,
+        customOverlay,
     }) => {
     const [isHover, setIsHover] = useState(false);
     const position = new kakao.maps.LatLng(item.lon, item.lat);
-
 
     // hover 기능 on
     const handleOnMouseEnter = () => {
@@ -22,6 +22,17 @@ const MainListItem = (
         marker.setMap(map);
 
         createLinePath();
+
+        const content =
+            '<div class="overlaybox">' +
+                `<div class="overlayInfo">` +
+                    `<div>${item.name}</div>` +
+                    `<div>${item.distance}km</div>` +
+                `</div>` +
+                `<div class="blank"></div>`+
+            '</div>';
+
+        setCustomOverlay(content, position);
     }
 
     // hover 기능 off
@@ -47,9 +58,21 @@ const MainListItem = (
         stationToRestaurantPolyline.setMap(null);
     }
 
+    // overlay의 정보를 설정한다.
+    const setCustomOverlay = (content, position) => {
+        // console.log(content);
+        // console.log(position);
+
+        customOverlay.setContent(content);
+        customOverlay.setPosition(position);
+        customOverlay.setMap(map);
+    }
+
     return (
         <div className="MainListItem"
-             onMouseLeave={handleOnMouseLeave}
+             onMouseLeave={()=>{
+                 setIsHover(false);
+             }}
              onMouseEnter={handleOnMouseEnter}
              style={isHover ? {background: "lightgray"} : {}}
         >

@@ -6,14 +6,15 @@
 
 
 .Navbar {
-    text-align:left;
+    text-align: left;
     width: 100%;
     height: 5%;
     vertical-align: middle;
     padding-top: 5px;
-    padding-left:10px ;
+    padding-left: 10px;
 }
-.Navbar .NavInput{
+
+.Navbar .NavInput {
     width: 60%;
     height: 70%;
     vertical-align: middle;
@@ -36,10 +37,21 @@
     overflow: scroll;
 }
 
-.MainContent .MainList .MainListItem{
+.MainContent .MainList .MainListItem {
     border-bottom: 1px solid gray;
     padding: 20px;
 }
 
 
+.overlayInfo {
+    border : 2px solid black;
+    border-radius: 10px;
+    position: relative;
+    padding: 10px 10px;
+    background: rgb(255,255,255, 1);
+}
+
+.blank {
+    height: 45px;
+}
 
