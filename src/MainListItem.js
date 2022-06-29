@@ -6,7 +6,7 @@ const MainListItem = ({item, map, marker}) => {
     const [isHover, setIsHover] = useState(false);
     const position = new kakao.maps.LatLng(item.lon, item.lat);
 
-    // 지도의 위치 이동 및 마커 설정
+    // hover 기능 on
     const handleOnMouseEnter = ()=> {
         setIsHover(true);
         map.panTo(position);
@@ -14,6 +14,7 @@ const MainListItem = ({item, map, marker}) => {
         marker.setMap(map);
     }
 
+    // hover 기능 off
     const handleOnMouseLeave = ()=> {
         setIsHover(false);
         marker.setMap(null);
@@ -32,7 +33,9 @@ const MainListItem = ({item, map, marker}) => {
                 <span>cate1 : {item.cate1}</span><br/>
                 <span>cate2 : {item.cate2}</span><br/>
                 <span>cate3 : {item.cate3}</span><br/>
-                <span>cate4 : {item.cate4}</span><br/>
+
+                <span>lon : {item.lon}</span><br/>
+                <span>lat : {item.lat}</span><br/>
             </div>
         </div>
     );
