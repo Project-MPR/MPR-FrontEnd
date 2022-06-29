@@ -1,30 +1,57 @@
-import React,{useState} from "react";
+import React, {useState} from "react";
 
 const {kakao} = window;
 
-const MainListItem = ({item, map, marker}) => {
+const MainListItem = (
+    {
+        item,
+        map,
+        marker,
+        station,
+        stationToRestaurantPolyline
+    }) => {
     const [isHover, setIsHover] = useState(false);
     const position = new kakao.maps.LatLng(item.lon, item.lat);
 
+
     // hover 기능 on
-    const handleOnMouseEnter = ()=> {
+    const handleOnMouseEnter = () => {
         setIsHover(true);
         map.panTo(position);
         marker.setPosition(position);
         marker.setMap(map);
+
+        createLinePath();
     }
 
     // hover 기능 off
-    const handleOnMouseLeave = ()=> {
+    const handleOnMouseLeave = () => {
         setIsHover(false);
         marker.setMap(null);
+
+        removeLinePath()
+    }
+
+    // line path를 출력할 함수 구현
+    const createLinePath = () => {
+        const linePath = [];
+        linePath.push(station.position);
+        linePath.push(position);
+
+        // 지도에 선을 표시합니다
+        stationToRestaurantPolyline.setPath(linePath);
+        stationToRestaurantPolyline.setMap(map);
+    }
+    // line path를 지우는 함수 구현
+    const removeLinePath = () => {
+        stationToRestaurantPolyline.setMap(null);
     }
 
     return (
         <div className="MainListItem"
              onMouseLeave={handleOnMouseLeave}
              onMouseEnter={handleOnMouseEnter}
-             style={isHover ?{background : "lightgray"} : {}}
+             style={isHover ? {background: "lightgray"} : {}}
         >
             <div className="info">
                 <span>식당 이름 : {item.name}</span><br/>

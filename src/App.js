@@ -16,9 +16,18 @@ function App() {
         {
             name: "광운대역",
             lon: 37.623662704,
-            lat: 127.061441277
+            lat: 127.061441277,
+            position: new kakao.maps.LatLng(37.623662704, 127.061441277),
         });
     const stationPosition = new kakao.maps.LatLng(station.lon, station.lat);
+    const [stationToRestaurantPolyline, setStationToRestaurantPolyline] = useState(
+        new kakao.maps.Polyline({
+            strokeWeight: 6, // 선의 두께 입니다
+            strokeColor: '#39DE2A', // 선의 색깔입니다
+            strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeStyle: 'shortdashdot' // 선의 스타일입니다
+        }));
+
 
     // rest api로 역 이름을 통해 음식점 정보를 가져오는 함수
     const getDate = async (station) => {
@@ -49,7 +58,13 @@ function App() {
         <div className="App">
             <Navbar/>
             <div className="MainContent">
-                <MainList listContent={data} map={map} marker={marker}/>
+                <MainList
+                    listContent={data}
+                    map={map}
+                    marker={marker}
+                    station={station}
+                    stationToRestaurantPolyline={stationToRestaurantPolyline}
+                />
                 <KakaoMap map={map} station={station}/>
             </div>
         </div>

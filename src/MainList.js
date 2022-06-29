@@ -1,8 +1,15 @@
 import MainListItem from "./MainListItem";
 import React from "react";
 
-const MainList = ({listContent, map, marker}) => {
-
+const MainList = (
+    {
+        listContent,
+        map,
+        marker,
+        station,
+        stationToRestaurantPolyline
+    }
+) => {
     return (
         <div className="MainList">
             {
@@ -11,6 +18,8 @@ const MainList = ({listContent, map, marker}) => {
                     item={it}
                     map={map}
                     marker={marker}
+                    station={station}
+                    stationToRestaurantPolyline={stationToRestaurantPolyline}
                 />)
             }
         </div>);
