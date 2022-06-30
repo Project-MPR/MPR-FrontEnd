@@ -25,11 +25,11 @@ const MainListItem = (
 
         const content =
             '<div class="overlaybox">' +
-                `<div class="overlayInfo">` +
-                    `<div>${item.name}</div>` +
-                    `<div>${item.distance}km</div>` +
-                `</div>` +
-                `<div class="blank"></div>`+
+            `<div class="overlayInfo">` +
+            `<div>${item.name}</div>` +
+            `<div>${item.distance}km</div>` +
+            `</div>` +
+            `<div class="blank"></div>` +
             '</div>';
 
         setCustomOverlay(content, position);
@@ -70,7 +70,7 @@ const MainListItem = (
 
     return (
         <div className="MainListItem"
-             onMouseLeave={()=>{
+             onMouseLeave={() => {
                  setIsHover(false);
              }}
              onMouseEnter={handleOnMouseEnter}
