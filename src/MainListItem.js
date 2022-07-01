@@ -4,7 +4,7 @@ const {kakao} = window;
 
 const MainListItem = (
     {
-        item,
+        restaurant,
         map,
         marker,
         station,
@@ -12,7 +12,7 @@ const MainListItem = (
         customOverlay,
     }) => {
     const [isHover, setIsHover] = useState(false);
-    const position = new kakao.maps.LatLng(item.lon, item.lat);
+    const position = new kakao.maps.LatLng(restaurant.lon, restaurant.lat);
 
     // hover 기능 on
     const handleOnMouseEnter = () => {
@@ -26,8 +26,8 @@ const MainListItem = (
         const content =
             '<div class="overlaybox">' +
             `<div class="overlayInfo">` +
-            `<div>${item.name}</div>` +
-            `<div>${item.distance}km</div>` +
+            `<div>${restaurant.name}</div>` +
+            `<div>${restaurant.distance}km</div>` +
             `</div>` +
             `<div class="blank"></div>` +
             '</div>';
@@ -67,25 +67,32 @@ const MainListItem = (
         customOverlay.setPosition(position);
         customOverlay.setMap(map);
     }
+    // https://map.kakao.com/link/to/카카오판교오피스,37.402056,127.108212
+    //`https://map.kakao.com/link/to/${station.name},${station.lon},${station.lat}?sName=${station.name}`
+    //`https://map.kakao.com/?sName=${station.name}&eName=${restaurant.name}`
+    const onClickMoveToDirectionPage = () => {
+        const url = `https://map.kakao.com/?sName=${station.name}&eName=${restaurant.name}`;
+        window.open(url);
+    }
 
     return (
         <div className="MainListItem"
+             onClick={onClickMoveToDirectionPage}
              onMouseLeave={() => {
                  setIsHover(false);
              }}
              onMouseEnter={handleOnMouseEnter}
              style={isHover ? {background: "lightgray"} : {}}
         >
-            <div className="info">
-                <span>식당 이름 : {item.name}</span><br/>
-                <span>역에서 식당까지 거리 : {item.distance}km</span><br/>
-                <span>동 : {item.dong}</span><br/>
-                <span>cate1 : {item.cate1}</span><br/>
-                <span>cate2 : {item.cate2}</span><br/>
-                <span>cate3 : {item.cate3}</span><br/>
-
-                <span>lon : {item.lon}</span><br/>
-                <span>lat : {item.lat}</span><br/>
+            <div className="Info">
+                <span className="RestaurantName">{restaurant.name}</span><br/>
+                <span>역에서 식당까지 거리 : {restaurant.distance}km</span><br/>
+                <span>동 : {restaurant.dong}</span><br/>
+                <div className="Categories">
+                    <span>{restaurant.cate1}</span>
+                    <span>{restaurant.cate2}</span>
+                    <span>{restaurant.cate3}</span>
+                </div>
             </div>
         </div>
     );

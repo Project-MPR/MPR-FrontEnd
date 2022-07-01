@@ -3,7 +3,7 @@ import React from "react";
 
 const MainList = (
     {
-        listContent,
+        restaurants,
         map,
         marker,
         station,
@@ -14,9 +14,9 @@ const MainList = (
     return (
         <div className="MainList">
             {
-                listContent && listContent.map(it => <MainListItem
+                restaurants && restaurants.map(it => <MainListItem
                     key={it.id}
-                    item={it}
+                    restaurant={it}
                     map={map}
                     marker={marker}
                     station={station}

@@ -63,7 +63,7 @@ function App() {
             <Navbar/>
             <div className="MainContent">
                 <MainList
-                    listContent={data}
+                    restaurants={data}
                     map={map}
                     marker={marker}
                     station={station}
