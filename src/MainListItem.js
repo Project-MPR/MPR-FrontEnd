@@ -89,9 +89,9 @@ const MainListItem = (
                 <span>역에서 식당까지 거리 : {restaurant.distance}km</span><br/>
                 <span>동 : {restaurant.dong}</span><br/>
                 <div className="Categories">
-                    <span>{restaurant.cate1}</span>
-                    <span>{restaurant.cate2}</span>
-                    <span>{restaurant.cate3}</span>
+                    <span>{restaurant.cate_1}</span>
+                    <span>{restaurant.cate_2}</span>
+                    <span>{restaurant.cate_3}</span>
                 </div>
             </div>
         </div>
