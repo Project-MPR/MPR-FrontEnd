@@ -20,16 +20,11 @@ const MainListItem = ({item, map, marker}) => {
     }
 
     return (
-<<<<<<< HEAD
-        <div className="MainListItem">
-            <h2>list element</h2>
-=======
         <div className="MainListItem"
              onMouseLeave={handleOnMouseLeave}
              onMouseEnter={handleOnMouseEnter}
              style={isHover ?{background : "lightgray"} : {}}
         >
->>>>>>> 3550c8bfb0ba033c3a726873e407ea20be8ad323
             <div className="info">
                 <span>식당 이름 : {item.name}</span><br/>
                 <span>역에서 식당까지 거리 : {item.distance}km</span><br/>
