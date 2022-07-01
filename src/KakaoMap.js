@@ -1,8 +1,8 @@
 import React from 'react';
 
-const KakaoMap = ({map}) => {
+const KakaoMap = ({map, station}) => {
     return (
-        <div id='myMap' style={{height:"95vh", width : "80vw"}}></div>
+        <div id='myMap' style={{height: "95vh", width: "80vw"}}></div>
     );
 }
 

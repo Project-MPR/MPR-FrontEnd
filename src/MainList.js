@@ -1,16 +1,27 @@
 import MainListItem from "./MainListItem";
 import React from "react";
 
-const MainList = ({listContent, map, marker}) => {
-
+const MainList = (
+    {
+        restaurants,
+        map,
+        marker,
+        station,
+        stationToRestaurantPolyline,
+        customOverlay,
+    }
+) => {
     return (
         <div className="MainList">
             {
-                listContent && listContent.map(it => <MainListItem
+                restaurants && restaurants.map(it => <MainListItem
                     key={it.id}
-                    item={it}
+                    restaurant={it}
                     map={map}
                     marker={marker}
+                    station={station}
+                    stationToRestaurantPolyline={stationToRestaurantPolyline}
+                    customOverlay={customOverlay}
                 />)
             }
         </div>);
