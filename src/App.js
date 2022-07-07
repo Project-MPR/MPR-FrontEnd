@@ -58,9 +58,43 @@ function App() {
         setMarker(new kakao.maps.Marker());
     }, []);
 
+
+    // 검색어 자동완성
+    const stations = fetch("http://localhost:8080/api/stations");
+    const [search, setSearch] = useState("");
+    const [results, setResult] = useState([]);
+    
+    const updateField = (field, value, update = true) => {
+        if(update) onSearch(value);
+        if(field === 'keyword'){
+            setSearch(value);
+        }
+        if(field === 'results'){
+            setResult(value);
+        }
+    }
+
+    const onSearch = text => {
+        var results = stations.filter(item => true === matchName(item.name, text));
+        setResult({results});
+    }
+
+    const matchName = (name, search) => {
+        var searchLen = search.length;
+        name = name.toLowerCase().substring(0, searchLen);
+        if(search === "") return false;
+        return name === search.toString().toLowerCase();
+    }
+
+
+
     return (
         <div className="App">
-            <Navbar/>
+            <Navbar 
+                search={search}
+                results={results}
+                updateField={updateField}
+                />
             <div className="MainContent">
                 <MainList
                     restaurants={data}
