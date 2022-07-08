@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap');
 .App {
     position: fixed;
     width: 100%;
     height: 100%;
+
+    font-family: "Nanum Pen Script", serif;
 }
 
-
+/* Navbar */
 .Navbar {
     text-align: left;
     width: 100%;
@@ -20,7 +23,12 @@
     vertical-align: middle;
 }
 
+.Navbar span{
+    font-family: "BM Yeonsung", serif;
+    font-size: 20px;
+}
 
+/* MainContent */
 .MainContent {
     border: 1px solid gray;
     display: flex;
@@ -35,6 +43,7 @@
     width: 25%;
     height: 95vh;
     overflow: scroll;
+    font-size: 20px;
 }
 
 .MainContent .MainList .MainListItem {
@@ -43,7 +52,7 @@
     cursor: pointer;
 }
 
-
+/* OverlayInfo */
 .overlayInfo {
     border: 2px solid black;
     border-radius: 10px;
@@ -56,19 +65,8 @@
     height: 45px;
 }
 
-.Categories {
-    margin-top: 10px;
-}
-
-.Info .RestaurantName {
-    font-size: 20px;
-    font-weight: 900;
-}
-
-
-.Categories span {
-    border: 2px solid gray;
-    border-radius: 10px;
-    margin: 3px;
-    padding: 2px;
+.MainContent .MainList .MainListItem .Info .RestaurantName {
+    font-family: "BM Yeonsung", serif;
+    font-size: 30px;
+    font-weight: bold;
 }
