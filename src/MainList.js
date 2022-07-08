@@ -1,9 +1,8 @@
-import MainListItem from "./MainListItem";
 import React, {useContext} from "react";
+import MainListItem from "./MainListItem";
 import {MainListDataStateContext} from "./App";
 
-const MainList = (
-) => {
+const MainList = () => {
     // reducer를 통해서 사용한 전역 데이터 가지고 오기
     const restaurants = useContext(MainListDataStateContext);
 

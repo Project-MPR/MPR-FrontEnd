@@ -5,7 +5,7 @@ const Navbar = () => {
 
     return (
         <div className="Navbar">
-            <span>역 검색 : </span>
+            <div>역 검색 :</div>
             <input
                 className="NavInput"
                 value={search}

@@ -77,4 +77,4 @@ const overlayReducer = (state, action) => {
     return newState;
 }
 
-export {dataReducer,markerReducer,mapReducer,overlayReducer,polyLineReducer,stationReducer};
+export {dataReducer, markerReducer, mapReducer, overlayReducer, polyLineReducer, stationReducer};

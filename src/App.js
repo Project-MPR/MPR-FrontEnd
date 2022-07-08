@@ -28,7 +28,7 @@ function App() {
             strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
             strokeStyle: 'shortdashdot' // 선의 스타일입니다
         }));
-    const [overlay, overlayDispatch] = useReducer(overlayReducer,  new kakao.maps.CustomOverlay({yAnchor: 1}));
+    const [overlay, overlayDispatch] = useReducer(overlayReducer, new kakao.maps.CustomOverlay({yAnchor: 1}));
 
     // rest api로 역 이름을 통해 음식점 정보를 가져오는 함수
     const getDate = async (station) => {
@@ -44,7 +44,7 @@ function App() {
     }, [station.name]);
 
     // mount 될때 마다 새로 map 객체를 생성하자(그렇지 않으면 오류가 발생)
-    useEffect(()=>{
+    useEffect(() => {
         const container = document.getElementById("myMap");
 
         const option = {
@@ -52,7 +52,7 @@ function App() {
             level: 3,
         };
         mapDispatch({type: "INIT", data: new kakao.maps.Map(container, option)});
-    },[])
+    }, [])
 
     const states = {map, station, marker, polyline, overlay}// 전역적인 사용을 위해서 하나의 객체로 감싸자
 

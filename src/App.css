@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap');
+
 .App {
     position: fixed;
     width: 100%;
@@ -9,28 +10,35 @@
 
 /* Navbar */
 .Navbar {
-    text-align: left;
     width: 100%;
     height: 5%;
-    vertical-align: middle;
     padding-top: 5px;
     padding-left: 10px;
+
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-items: center;
+}
+
+
+.Navbar div {
+    text-align: center;
+    font-family: "BM Yeonsung", serif;
+    font-size: 20px;
+    padding-top: 4px;
 }
 
 .Navbar .NavInput {
     width: 60%;
     height: 70%;
-    vertical-align: middle;
-}
 
-.Navbar span{
-    font-family: "BM Yeonsung", serif;
-    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid darkgray;
+
 }
 
 /* MainContent */
 .MainContent {
-    border: 1px solid gray;
     display: flex;
 }
 
@@ -38,18 +46,61 @@
     float: right;
 }
 
+/* MainList */
 .MainContent .MainList {
-    border-right: 1px solid gray;
     width: 25%;
     height: 95vh;
     overflow: scroll;
     font-size: 20px;
+
+    border-right: 1px solid lightgray;
+    padding-right: 5px;
 }
 
+@media (min-width: 400px) {
+    .MainContent .MainList {
+        min-width: 300px;
+        height: 95vh;
+        overflow: scroll;
+        font-size: 20px;
+    }
+}
+
+
 .MainContent .MainList .MainListItem {
-    border-bottom: 1px solid gray;
     padding: 20px;
     cursor: pointer;
+
+    border: 1px solid lightgray;
+    border-radius: 5px;
+
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+
+    box-shadow: 5px 4px 4px -4px gray;
+}
+
+.MainContent .MainList .MainListItem .Categories {
+    display: flex;
+    justify-content: left;
+    margin-top: 10px;
+
+    flex-wrap: wrap;
+}
+
+.MainContent .MainList .MainListItem .Categories div {
+    border: 2px solid gray;
+    border-radius: 8px;
+
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+
+    margin-right: 5px;
+    margin-bottom: 2px;
+
 }
 
 /* OverlayInfo */
