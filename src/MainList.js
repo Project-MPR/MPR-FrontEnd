@@ -1,27 +1,17 @@
+import React, {useContext} from "react";
 import MainListItem from "./MainListItem";
-import React from "react";
+import {MainListDataStateContext} from "./App";
 
-const MainList = (
-    {
-        restaurants,
-        map,
-        marker,
-        station,
-        stationToRestaurantPolyline,
-        customOverlay,
-    }
-) => {
+const MainList = () => {
+    // reducer를 통해서 사용한 전역 데이터 가지고 오기
+    const restaurants = useContext(MainListDataStateContext);
+
     return (
         <div className="MainList">
             {
                 restaurants && restaurants.map(it => <MainListItem
                     key={it.id}
                     restaurant={it}
-                    map={map}
-                    marker={marker}
-                    station={station}
-                    stationToRestaurantPolyline={stationToRestaurantPolyline}
-                    customOverlay={customOverlay}
                 />)
             }
         </div>);

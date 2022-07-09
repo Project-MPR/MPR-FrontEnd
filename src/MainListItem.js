@@ -1,18 +1,13 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
+import {MainListStationStateContext} from "./App";
 
 const {kakao} = window;
 
-const MainListItem = (
-    {
-        restaurant,
-        map,
-        marker,
-        station,
-        stationToRestaurantPolyline,
-        customOverlay,
-    }) => {
+const MainListItem = ({restaurant}) => {
     const [isHover, setIsHover] = useState(false);
     const position = new kakao.maps.LatLng(restaurant.lon, restaurant.lat);
+
+    const {map, marker, station, polyline, overlay} = useContext(MainListStationStateContext);
 
     // hover 기능 on
     const handleOnMouseEnter = () => {
@@ -35,14 +30,6 @@ const MainListItem = (
         setCustomOverlay(content, position);
     }
 
-    // hover 기능 off
-    const handleOnMouseLeave = () => {
-        setIsHover(false);
-        marker.setMap(null);
-
-        removeLinePath()
-    }
-
     // line path를 출력할 함수 구현
     const createLinePath = () => {
         const linePath = [];
@@ -50,26 +37,18 @@ const MainListItem = (
         linePath.push(position);
 
         // 지도에 선을 표시합니다
-        stationToRestaurantPolyline.setPath(linePath);
-        stationToRestaurantPolyline.setMap(map);
-    }
-    // line path를 지우는 함수 구현
-    const removeLinePath = () => {
-        stationToRestaurantPolyline.setMap(null);
+        polyline.setPath(linePath);
+        polyline.setMap(map);
     }
 
     // overlay의 정보를 설정한다.
     const setCustomOverlay = (content, position) => {
-        // console.log(content);
-        // console.log(position);
 
-        customOverlay.setContent(content);
-        customOverlay.setPosition(position);
-        customOverlay.setMap(map);
+        overlay.setContent(content);
+        overlay.setPosition(position);
+        overlay.setMap(map);
     }
-    // https://map.kakao.com/link/to/카카오판교오피스,37.402056,127.108212
-    //`https://map.kakao.com/link/to/${station.name},${station.lon},${station.lat}?sName=${station.name}`
-    //`https://map.kakao.com/?sName=${station.name}&eName=${restaurant.name}`
+
     const onClickMoveToDirectionPage = () => {
         const url = `https://map.kakao.com/?sName=${station.name}&eName=${restaurant.name}`;
         window.open(url);
@@ -85,13 +64,13 @@ const MainListItem = (
              style={isHover ? {background: "lightgray"} : {}}
         >
             <div className="Info">
-                <span className="RestaurantName">{restaurant.name}</span><br/>
-                <span>역에서 식당까지 거리 : {restaurant.distance}km</span><br/>
-                <span>동 : {restaurant.dong}</span><br/>
+                <div className="RestaurantName">{restaurant.name}</div>
+                <div>역에서 식당까지 거리 : {restaurant.distance}km</div>
+                <div>동 : {restaurant.dong}</div>
                 <div className="Categories">
-                    <span>{restaurant.cate_1}</span>
-                    <span>{restaurant.cate_2}</span>
-                    <span>{restaurant.cate_3}</span>
+                    <div>{restaurant.cate_1}</div>
+                    <div>{restaurant.cate_2}</div>
+                    <div>{restaurant.cate_3}</div>
                 </div>
             </div>
         </div>
