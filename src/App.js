@@ -60,7 +60,7 @@ function App() {
         <MainListDataStateContext.Provider value={data}>
             <MainListStationStateContext.Provider value={states}>
                 <div className="App">
-                    <Navbar/>
+                    <Navbar stationDispatch={stationDispatch}/>
                     <div className="MainContent">
                         <MainList/>
                         <KakaoMap/>
