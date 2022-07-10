@@ -10,40 +10,69 @@
 
 /* Navbar */
 .Navbar {
-    width: 100%;
-    height: 5%;
-    padding-top: 5px;
-    padding-left: 10px;
+    height: 50px;
+    flex-grow: 1;
 
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid lightgray;
     display: flex;
-    justify-items: center;
+    justify-content: left;
+    z-index: 10;
+
+    align-items: flex-start;
+}
+
+.Navbar span {
+    font-size: 25px;
+    padding-top: 7px;
+    padding-left: 20px;
 }
 
 .Navbar .NavInputWrapper {
+    padding-top: 7px;
+
     min-width: 60%;
-    z-index: 999;
-}
+    background-color: white;
 
-.Navbar div {
+    border: 1px solid lightgray;
+    border-radius: 9px;
+    box-shadow: 8px 8px 4px -6px;
+    z-index: 20;
+    margin-bottom: 0;
+
     text-align: center;
-    font-family: "BM Yeonsung", serif;
-    font-size: 20px;
-    padding-top: 4px;
+
 }
 
-.Navbar .NavInput {
-    width: 60%;
-    height: 70%;
+.Navbar .NavInputWrapper .NavInput {
+    min-height: 27px;
+    min-width: 95%;
 
     border-radius: 5px;
-    border: 1px solid darkgray;
+}
 
+.Navbar .NavInputWrapper .NavInputList {
+    background-color: white;
+    min-width: 60%;
+
+    z-index: 999;
+    padding: 5px;
+
+    font-size: 20px;
+}
+
+.Navbar .NavInputWrapper .NavInputList div {
+    padding-bottom: 5px;
+    text-align: start;
+    padding-left: 15px;
+    cursor: pointer;
 }
 
 /* MainContent */
 .MainContent {
     display: flex;
+    height: calc(100% - 50px); /* total height - navbar height*/
+
+    background-color: white;
 }
 
 .MainContent .myMap {
@@ -67,6 +96,10 @@
         height: 95vh;
         overflow: scroll;
         font-size: 20px;
+    }
+
+    .Navbar .NavInputWrapper .NavInput {
+        width: 400px;
     }
 }
 

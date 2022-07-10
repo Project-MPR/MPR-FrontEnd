@@ -7,12 +7,12 @@ const Navbar = ({stationDispatch}) => {
     const [isFocus, setIsFocus] = useState(false);
 
     // 모든 역 데이터 가져오기
-    const getStations = async ()=>{
+    const getStations = async () => {
         await fetch("http://localhost:8080/api/stations")
-                .then(res => res.json())
-                .then(res => setStations(res));
+            .then(res => res.json())
+            .then(res => setStations(res));
     }
-    useEffect(() =>{
+    useEffect(() => {
         getStations();
     }, []);
 
@@ -36,15 +36,26 @@ const Navbar = ({stationDispatch}) => {
 
     const onClickLi = (e, item) => {
         e.preventDefault();
-        stationDispatch({type : 'INIT', data : item});
+        stationDispatch({type: 'INIT', data: item});
         setSearch(item.name);
         setIsFocus(false);
     }
 
     return (
         <div className="Navbar">
-            <div>역 검색 :</div>
-            <div className="NavInputWrapper">
+            <span>역 검색 :</span>
+            <div className="NavInputWrapper"
+                 style={isFocus ?
+                     {
+                         border: "2px solid blue",
+                         boxShadow: "4px 4px 4px -3px",
+                         backgroundColor: "rgba(255,255,255,1)"
+                     } :
+                     {
+                         border: "none",
+                         boxShadow: "0 0 0 0",
+                         backgroundColor: "rgba(0,0,0,0)"
+                     }}>
                 <input
                     className="NavInput"
                     value={search || ''}
@@ -53,18 +64,25 @@ const Navbar = ({stationDispatch}) => {
                         setSearch(e.target.value)
                     }}
                     onFocus={() => setIsFocus(true)}
+                    onBlur={() => setIsFocus(false)}
                 />
-                <ul className="input_list">
-                    {isFocus && results && 
-                    results.map(item => 
-                        <div key={item.name}
-                            onClick={e => onClickLi(e, item)} >{item.name}</div>
+                <div className="NavInputList"
+                     style={isFocus ? {zIndex: 999} : {zIndex: -999}}
+                >
+                    {isFocus && results &&
+                        results.map(item =>
+                            <div
+                                key={item.name}
+                                onClick={e => onClickLi(e, item)}
+                            >
+                                {item.name}
+                            </div>
                         )
-                        }
-                </ul>
+                    }
+                </div>
             </div>
         </div>
-        )
+    )
 }
 
 export default Navbar;
