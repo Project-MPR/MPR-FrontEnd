@@ -20,6 +20,10 @@
     justify-items: center;
 }
 
+.Navbar .NavInputWrapper {
+    min-width: 60%;
+    z-index: 999;
+}
 
 .Navbar div {
     text-align: center;
