@@ -1,4 +1,4 @@
-const {kakao} = window
+const {kakao} = window;
 
 const dataReducer = (state, action) => {
     let newState = [];
@@ -19,7 +19,8 @@ const stationReducer = (state, action) => {
     let newState = {}
     switch (action.type) {
         case 'INIT': {
-            newState = {...action.data}
+            const position = new kakao.maps.LatLng(action.data.lon, action.data.lat);
+            newState = {...action.data, position : position}
             break;
         }
         default:

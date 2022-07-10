@@ -52,7 +52,7 @@ function App() {
             level: 3,
         };
         mapDispatch({type: "INIT", data: new kakao.maps.Map(container, option)});
-    }, [])
+    }, [station.position])
 
     const states = {map, station, marker, polyline, overlay}// 전역적인 사용을 위해서 하나의 객체로 감싸자
 
