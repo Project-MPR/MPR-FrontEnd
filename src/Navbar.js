@@ -43,17 +43,17 @@ const Navbar = ({stationDispatch}) => {
         <div className="Navbar">
             <span>역 검색 :</span>
             <div className="NavInputWrapper"
-                 style={isFocus ?
-                     {
-                         border: "2px solid blue",
-                         boxShadow: "4px 4px 4px -3px",
-                         backgroundColor: "rgba(255,255,255,1)"
-                     } :
-                     {
-                         border: "none",
-                         boxShadow: "0 0 0 0",
-                         backgroundColor: "rgba(0,0,0,0)"
-                     }}>
+                style={isFocus ?
+                    {
+                        border: "2px solid blue",
+                        boxShadow: "4px 4px 4px -3px",
+                        backgroundColor: "rgba(255,255,255,1)"
+                    } :
+                    {
+                        border: "none",
+                        boxShadow: "0 0 0 0",
+                        backgroundColor: "rgba(0,0,0,0)"
+                    }}>
                 <input
                     className="NavInput"
                     value={search || ''}
@@ -69,7 +69,7 @@ const Navbar = ({stationDispatch}) => {
                     }}
                 />
                 <div className="NavInputList"
-                     style={isFocus ? {zIndex: 999} : {zIndex: -999}}>
+                    style={isFocus ? {zIndex: 999} : {zIndex: -999}}>
                     {isFocus && results &&
                         results.map(item =>
                             <div key={item.name} onClick={e => onClickLi(e, item)}>
