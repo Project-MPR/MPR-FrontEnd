@@ -16,9 +16,6 @@ const Navbar = ({stationDispatch}) => {
         getStations();
     }, []);
 
-    // let sts = stations.slice(0, stations.length/2);
-    // console.log(sts);
-
     // 입력받는 text에 따른 자동완성 list
     // 입력받은 문자열을 키워드와 비교, 매칭되는지 확인
     const matchText = (name, search) => {
@@ -35,6 +32,7 @@ const Navbar = ({stationDispatch}) => {
     };
 
     const onClickLi = (e, item) => {
+        console.log("click li");
         e.preventDefault();
         stationDispatch({type: 'INIT', data: item});
         setSearch(item.name);
@@ -64,17 +62,17 @@ const Navbar = ({stationDispatch}) => {
                         setSearch(e.target.value)
                     }}
                     onFocus={() => setIsFocus(true)}
-                    onBlur={() => setIsFocus(false)}
+                    onBlur={() => {
+                        setTimeout(() => {
+                            setIsFocus(false);
+                        }, 100);
+                    }}
                 />
                 <div className="NavInputList"
-                     style={isFocus ? {zIndex: 999} : {zIndex: -999}}
-                >
+                     style={isFocus ? {zIndex: 999} : {zIndex: -999}}>
                     {isFocus && results &&
                         results.map(item =>
-                            <div
-                                key={item.name}
-                                onClick={e => onClickLi(e, item)}
-                            >
+                            <div key={item.name} onClick={e => onClickLi(e, item)}>
                                 {item.name}
                             </div>
                         )
