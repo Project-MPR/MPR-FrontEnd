@@ -41,6 +41,25 @@ const Navbar = ({stationDispatch}) => {
         setIsFocus(false);
     }
 
+    const updateText = text => {
+        updateFiled("search", text, false);
+        updateFiled("results", []);
+    };
+
+    var renderResults;
+    const arr = results['results'];
+    if(arr){
+        renderResults = arr.map((item => {
+            return (
+                <SearchView
+                    updateText={updateText}
+                    name={item.name}
+                    code={item.code}
+                    key={item.code}
+                />
+            );
+        }));
+    }
     return (
         <div className="Navbar">
             <div>역 검색 :</div>
