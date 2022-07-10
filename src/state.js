@@ -1,3 +1,5 @@
+const {kakao} = window
+
 const dataReducer = (state, action) => {
     let newState = [];
 

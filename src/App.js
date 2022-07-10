@@ -55,7 +55,7 @@ function App() {
     }, [])
 
     const states = {map, station, marker, polyline, overlay}// 전역적인 사용을 위해서 하나의 객체로 감싸자
-    
+
     return (
         <MainListDataStateContext.Provider value={data}>
             <MainListStationStateContext.Provider value={states}>
