@@ -40,9 +40,9 @@ const Navbar = ({stationDispatch}) => {
 
     // 그냥 엔터를 누른 경우 가장 상단의 역으로 이동하기
     const keyPressDownEnter = (e) => {
-        if (e.keyCode === 13 && results.length !== 0) {
-            stationDispatch({type: 'INIT', data: results[0]});
-            setSearch(results[0].name);
+        if (e.keyCode === 13 && autoComplete.length !== 0) {
+            stationDispatch({type: 'INIT', data: autoComplete[0]});
+            setSearch(autoComplete[0].name);
             setIsFocus(false);
         }
     }
