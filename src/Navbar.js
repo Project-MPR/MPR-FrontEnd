@@ -32,11 +32,19 @@ const Navbar = ({stationDispatch}) => {
     };
 
     const onClickLi = (e, item) => {
-        console.log("click li");
         e.preventDefault();
         stationDispatch({type: 'INIT', data: item});
         setSearch(item.name);
         setIsFocus(false);
+    }
+
+    // 그냥 엔터를 누른 경우 가장 상단의 역으로 이동하기
+    const keyPressDownEnter = (e) => {
+        if (e.keyCode === 13 && results.length !== 0) {
+            stationDispatch({type: 'INIT', data: results[0]});
+            setSearch(results[0].name);
+            setIsFocus(false);
+        }
     }
 
     return (
@@ -67,6 +75,7 @@ const Navbar = ({stationDispatch}) => {
                             setIsFocus(false);
                         }, 100);
                     }}
+                    onKeyDown={keyPressDownEnter}
                 />
                 <div className="NavInputList"
                     style={isFocus ? {zIndex: 999} : {zIndex: -999}}>
