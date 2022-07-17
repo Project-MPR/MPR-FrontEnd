@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 const Navbar = ({stationDispatch}) => {
     const [search, setSearch] = useState();
     const [stations, setStations] = useState([]);
-    const [results, setResults] = useState([]);
+    const [autoComplete, setAutoComplete] = useState([]);
     const [isFocus, setIsFocus] = useState(false);
 
     // 모든 역 데이터 가져오기
@@ -28,7 +28,7 @@ const Navbar = ({stationDispatch}) => {
     // 매칭 후 해당 값을 list 로 저장
     const onSearch = text => {
         var result = stations.filter(item => true === matchText(item.name, text));
-        setResults(result);
+        setAutoComplete(result);
     };
 
     const onClickLi = (e, item) => {
@@ -70,8 +70,8 @@ const Navbar = ({stationDispatch}) => {
                 />
                 <div className="NavInputList"
                     style={isFocus ? {zIndex: 999} : {zIndex: -999}}>
-                    {isFocus && results &&
-                        results.map(item =>
+                    {isFocus && autoComplete &&
+                        autoComplete.map(item =>
                             <div key={item.name} onClick={e => onClickLi(e, item)}>
                                 {item.name}
                             </div>
