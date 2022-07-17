@@ -1,0 +1,57 @@
+.Search{
+    height:100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: start;
+}
+
+.Search .header{
+    height: 80px;
+    width: 100%;
+}
+
+.Search .footer {
+    height: 80px;
+    width: 100%;
+}
+.Search .search_wrapper{
+    width: 600px;
+    text-align: center;
+    justify-content: center;
+
+    /*위치를 고정*/
+    position: absolute;
+}
+
+.Search .search_wrapper input{
+    border-radius: 7px;
+    width: 100%;
+    height : 30px;
+}
+
+.Search .search_wrapper .search_input_wrapper{
+    justify-content: space-around;
+    border-radius: 7px;
+
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 27px;
+
+
+}
+
+.Search .search_wrapper .search_input_wrapper .SearchInputList{
+    font-family: "Nanum Pen Script", serif;
+    font-size: 25px;
+}
+
+.Search .search_wrapper .search_input_wrapper .SearchInputList div{
+    font-size: 25px;
+    padding-bottom: 5px;
+}
+
+
