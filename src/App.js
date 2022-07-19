@@ -36,6 +36,7 @@ function App() {
             .then(res => res.json())
             .then(res => res.sort((a, b) => a.distance - b.distance))
             .then(res => dataDispatch({type: 'INIT', data: res}));
+            ProcessingInstruction
     }
 
     // station이 변경될때 마다 정보를 다시 불러오는 useEffect
