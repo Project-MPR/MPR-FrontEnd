@@ -16,8 +16,6 @@ function App() {
             position: new kakao.maps.LatLng(37.623662704, 127.061441277),
         });
 
-    const states = {map, station, marker, polyline, overlay}// 전역적인 사용을 위해서 하나의 객체로 감싸자
-
     return (
         <BrowserRouter>
             <div className="App">

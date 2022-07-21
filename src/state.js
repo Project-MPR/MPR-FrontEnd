@@ -1,3 +1,5 @@
+import KakaoMap from "./components/KakaoMap";
+
 const {kakao} = window;
 
 const dataReducer = (state, action) => {
