@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {MainListStationStateContext} from "./App";
+import {MainListStationStateContext} from "../pages/Home";
 
 const {kakao} = window;
 
