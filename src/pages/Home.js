@@ -3,6 +3,7 @@ import KakaoMap from "../components/KakaoMap";
 import MainList from "../components/MainList";
 import {createContext, useEffect, useReducer} from "react";
 import {dataReducer, mapReducer, markerReducer, overlayReducer, polyLineReducer} from "../state";
+import {apiData} from "../api/server";
 
 
 const {kakao} = window;
@@ -28,10 +29,7 @@ const Home = ({station, stationDispatch}) => {
 
     // rest api로 역 이름을 통해 음식점 정보를 가져오는 함수
     const getDate = async (station) => {
-        await fetch(`http://localhost:8080/api/restaurant/${station}`)
-            .then(res => res.json())
-            .then(res => res.sort((a, b) => a.distance - b.distance))
-            .then(res => dataDispatch({type: 'INIT', data: res}));
+        apiData(station).then(res => dataDispatch({type: 'INIT', data: res}));
     }
 
     // station이 변경될때 마다 정보를 다시 불러오는 useEffect

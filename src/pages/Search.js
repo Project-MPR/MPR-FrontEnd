@@ -1,6 +1,7 @@
 import "./Search.css"
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {apiStations} from "../api/server";
 
 const Search = ({stationDispatch}) => {
     const [search, setSearch] = useState();
@@ -12,9 +13,7 @@ const Search = ({stationDispatch}) => {
 
     // 모든 역 데이터 가져오기
     const getStations = async () => {
-        await fetch("http://localhost:8080/api/stations")
-            .then(res => res.json())
-            .then(res => setStations(res));
+        apiStations().then(res => setStations(res));
     }
     useEffect(() => {
         getStations();
@@ -59,10 +58,10 @@ const Search = ({stationDispatch}) => {
                 <img
                     className={"MPR_LOGO"}
                     src={process.env.PUBLIC_URL + "/mpr-icon.png"} alt={"mpr_image"}
-                style={{width:272, height:272}}/>
+                    style={{width: 272, height: 272}}/>
                 <br/>
                 <div className="search_input_wrapper"
-                    style={isFocus ? {border:"2px solid gray"} : {border : "none"}}
+                     style={isFocus ? {border: "2px solid gray"} : {border: "none"}}
                 >
                     <input
                         className="SearchInput"

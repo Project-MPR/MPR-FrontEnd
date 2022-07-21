@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {apiStations} from "../api/server";
 
 const Navbar = ({stationDispatch}) => {
     const [search, setSearch] = useState();
@@ -8,9 +9,7 @@ const Navbar = ({stationDispatch}) => {
 
     // 모든 역 데이터 가져오기
     const getStations = async () => {
-        await fetch("http://localhost:8080/api/stations")
-            .then(res => res.json())
-            .then(res => setStations(res));
+        apiStations().then(res => setStations(res));
     }
     useEffect(() => {
         getStations();
