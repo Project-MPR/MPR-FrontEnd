@@ -22,7 +22,7 @@ const stationReducer = (state, action) => {
     switch (action.type) {
         case 'INIT': {
             const position = new kakao.maps.LatLng(action.data.lon, action.data.lat);
-            newState = {...action.data, position : position}
+            newState = {...action.data, position: position}
             break;
         }
         default:
@@ -82,4 +82,6 @@ const overlayReducer = (state, action) => {
     return newState;
 }
 
-export {dataReducer, markerReducer, mapReducer, overlayReducer, polyLineReducer, stationReducer};
+const color = {red: "#F44336", green: "#8Bc34A", yellow: "#FFC107"}
+
+export {dataReducer, markerReducer, mapReducer, overlayReducer, polyLineReducer, stationReducer, color};
