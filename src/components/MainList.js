@@ -8,11 +8,11 @@ const MainList = () => {
     // reducer를 통해서 사용한 전역 데이터 가지고 오기
     const restaurants = useContext(MainListDataStateContext);
 
-    // 토글 구현
-    const[isOpen, setNav] = (useState(false));
-    const toggleNav = () => {
-        setNav(isOpen => !isOpen)
-    };
+    // // 토글 구현
+    // const[isOpen, setNav] = (useState(false));
+    // const toggleNav = () => {
+    //     setNav(isOpen => !isOpen)
+    // };
 
     return (
         <div className="MainList">
