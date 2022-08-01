@@ -60,6 +60,8 @@ const Search = ({stationDispatch}) => {
                     src={process.env.PUBLIC_URL + "/mpr-icon.png"} alt={"mpr_image"}
                     style={{width: 272, height: 272}}/>
                 <br/>
+                <div style={{fontSize:25}}>찾고자 하는 역을 입력해 주세요</div>
+
                 <div className="search_input_wrapper"
                      style={isFocus ? {border: "2px solid gray"} : {border: "none"}}
                 >
