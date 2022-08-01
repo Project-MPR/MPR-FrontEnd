@@ -11,6 +11,15 @@ jobs:
       - name: Checkout source code.   # 레포지토리 체크아웃
         uses: actions/checkout@master
 
+      - name: confirm npm version
+        run : npm -v
+
+      - name: upgrade npm version
+        run:  npm install -g npm
+
+      - name: reconfirm npm
+        run: npm -v
+
       - name: Install Dependencies    # 의존 파일 설치
         run: npm install
 
