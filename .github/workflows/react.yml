@@ -15,7 +15,7 @@ jobs:
         run : npm -v
 
       - name: upgrade npm version
-        run:  npm install -g npm
+        run:  npm install -g npm@8.5.5
 
       - name: reconfirm npm
         run: npm -v
