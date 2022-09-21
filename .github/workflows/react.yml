@@ -19,9 +19,4 @@ jobs:
 
       - name: reconfirm npm
         run: npm -v
-
-      - name: Install Dependencies    # 의존 파일 설치
-        run: npm install
-
-      - name: Build                   # React Build
         run: CI=false npm run build
