@@ -1,16 +1,15 @@
 import {useEffect, useState} from "react";
+import {apiStations} from "../api/server";
 
 const Navbar = ({stationDispatch}) => {
     const [search, setSearch] = useState();
     const [stations, setStations] = useState([]);
-    const [results, setResults] = useState([]);
+    const [autoComplete, setAutoComplete] = useState([]);
     const [isFocus, setIsFocus] = useState(false);
 
     // 모든 역 데이터 가져오기
     const getStations = async () => {
-        await fetch("http://localhost:8080/api/stations")
-            .then(res => res.json())
-            .then(res => setStations(res));
+        apiStations().then(res => setStations(res));
     }
     useEffect(() => {
         getStations();
@@ -28,7 +27,7 @@ const Navbar = ({stationDispatch}) => {
     // 매칭 후 해당 값을 list 로 저장
     const onSearch = text => {
         var result = stations.filter(item => true === matchText(item.name, text));
-        setResults(result);
+        setAutoComplete(result);
     };
 
     const onClickLi = (e, item) => {
@@ -40,9 +39,9 @@ const Navbar = ({stationDispatch}) => {
 
     // 그냥 엔터를 누른 경우 가장 상단의 역으로 이동하기
     const keyPressDownEnter = (e) => {
-        if (e.keyCode === 13 && results.length !== 0) {
-            stationDispatch({type: 'INIT', data: results[0]});
-            setSearch(results[0].name);
+        if (e.keyCode === 13 && autoComplete.length !== 0) {
+            stationDispatch({type: 'INIT', data: autoComplete[0]});
+            setSearch(autoComplete[0].name);
             setIsFocus(false);
         }
     }
@@ -51,17 +50,17 @@ const Navbar = ({stationDispatch}) => {
         <div className="Navbar">
             <span>역 검색 :</span>
             <div className="NavInputWrapper"
-                 style={isFocus ?
-                     {
-                         border: "2px solid blue",
-                         boxShadow: "4px 4px 4px -3px",
-                         backgroundColor: "rgba(255,255,255,1)"
-                     } :
-                     {
-                         border: "none",
-                         boxShadow: "0 0 0 0",
-                         backgroundColor: "rgba(0,0,0,0)"
-                     }}>
+                style={isFocus ?
+                    {
+                        border: "2px solid blue",
+                        boxShadow: "4px 4px 4px -3px",
+                        backgroundColor: "rgba(255,255,255,1)"
+                    } :
+                    {
+                        border: "none",
+                        boxShadow: "0 0 0 0",
+                        backgroundColor: "rgba(0,0,0,0)"
+                    }}>
                 <input
                     className="NavInput"
                     value={search || ''}
@@ -78,9 +77,9 @@ const Navbar = ({stationDispatch}) => {
                     onKeyDown={keyPressDownEnter}
                 />
                 <div className="NavInputList"
-                     style={isFocus ? {zIndex: 999} : {zIndex: -999}}>
-                    {isFocus && results &&
-                        results.map(item =>
+                    style={isFocus ? {zIndex: 999} : {zIndex: -999}}>
+                    {isFocus && autoComplete &&
+                        autoComplete.map(item =>
                             <div key={item.name} onClick={e => onClickLi(e, item)}>
                                 {item.name}
                             </div>

@@ -1,0 +1,42 @@
+.toggleBox {
+    list-style: none;
+    text-decoration: none;
+    margin: 0 auto;
+    width: 95%;
+    height: 10px;
+}
+
+.toggleBox li {
+    list-style: none;
+}
+
+.toggleBtn {
+    color: #ccc;
+    text-align: center;
+    line-height: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.6);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    width: 15%;
+    height: 20px;
+    display: block;
+    margin: 0 auto;
+}
+
+.nav-links {
+    transition: var(--mainTransition);
+    height: 0;
+    overflow: hidden;
+    transition-property: all;
+    transition-duration: .5s;
+}
+
+.show-nav {
+    border: 1px solid black;
+    border-radius: 4%;
+    height: 263px;
+    transition-property: all;
+    transition-duration: .5s;
+}

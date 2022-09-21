@@ -1,5 +1,6 @@
-import React, {useContext, useState} from "react";
-import {MainListStationStateContext} from "./App";
+import React, {useCallback, useContext, useMemo, useState} from "react";
+import {MainListStationStateContext} from "../pages/Home";
+import {color} from "../state";
 
 const {kakao} = window;
 
@@ -8,6 +9,16 @@ const MainListItem = ({restaurant}) => {
     const position = new kakao.maps.LatLng(restaurant.lon, restaurant.lat);
 
     const {map, marker, station, polyline, overlay} = useContext(MainListStationStateContext);
+
+    const getColorByDistance = useCallback((distance) => {
+        if (distance < 0.3) {
+            return color.green;
+        } else if (distance < 0.6) {
+            return color.yellow;
+        } else {
+            return color.red;
+        }
+    }, []);
 
     // hover 기능 on
     const handleOnMouseEnter = () => {
@@ -37,6 +48,13 @@ const MainListItem = ({restaurant}) => {
         linePath.push(position);
 
         // 지도에 선을 표시합니다
+
+        polyline.setOptions({
+            strokeWeight: 6, // 선의 두께 입니다
+            strokeColor: getColorByDistance(restaurant.distance), // 선의 색깔입니다
+            strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeStyle: 'shortdashdot' // 선의 스타일입니다
+        });
         polyline.setPath(linePath);
         polyline.setMap(map);
     }
@@ -54,6 +72,7 @@ const MainListItem = ({restaurant}) => {
         window.open(url);
     }
 
+
     return (
         <div className="MainListItem"
              onClick={onClickMoveToDirectionPage}
@@ -61,7 +80,7 @@ const MainListItem = ({restaurant}) => {
                  setIsHover(false);
              }}
              onMouseEnter={handleOnMouseEnter}
-             style={isHover ? {background: "lightgray"} : {}}
+             style={isHover ? {background: getColorByDistance(restaurant.distance), color: "white"} : {color: "black"}}
         >
             <div className="Info">
                 <div className="RestaurantName">{restaurant.name}</div>
